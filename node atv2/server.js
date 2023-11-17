@@ -1,16 +1,40 @@
-
 const express = require('express')
 const app = express()
-app.use('/public', express.static(__dirname + '/public'))
-app.get('/', (req, res) => {
-  // envia o arquivo da página principal
-  res.sendFile(__dirname + '/views/index.html')
+const port = 3000
+const exphbs = require('express-handlebars')
+
+//configure template handlebars
+app.engine('handlebars', exphbs.engine())
+app.set('view engine', 'handlebars')
+
+//parser para leitura do body
+app.use(
+express.urlencoded({
+extended: true
 })
+)
+app.use(express.json())
+
+app.get('/users/add', (req, res) => {
+res.render('userform')
+})
+
+app.post('/users/save', (req, res) => {
+const name = req.body.name
+const age = req.body.age
+const email = req.body.email
+const user = { name: name, age: age, email:email}
+res.render('viewuser', { user: user })
+
+})
+
 app.get('/', (req, res) => {
-  res.send('Olá mundo. Ir para Sobre')
+res.render('home')
 })
 
 
-app.listen(3000, () => {
-  console.log('Server online')
+
+//webserver
+app.listen(port, () => {
+console.log('Server Started')
 })
