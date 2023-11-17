@@ -1,18 +1,34 @@
 
-<div class="container-fluid col-4">
+<div class="container">
 <form action="/users/save" method="post">
-<div class="form-group">
-<label for="nome">Nome:</label>
-<input type="text" class="form-control" name="name" id="nome" placeholder="Digite seu Nome...">
+
+<div class="row"> 
+
+ <div class="col-6">
+<label>Nome:</label>
+<input type="text" class="form-control" name="name" id="nome">
 </div>
-<div class="form-group">
-<label for="idade">Idade:</label>
-<input type="text" class="form-control" name="age" id="idade" placeholder="Digite sua idade...">
+<div class="col-2">
+    <label>Data Nasc: </label>
+    <input type="date" class="form-control" name="dataNasc"
+    id="dataNasc">
 </div>
-<div class="form-group">
-<label for="idade">E-mail:</label>
-<input type="text" class="form-control" name="email" id="email" placeholder="Digite seu e-mail...">
 </div>
+<div class="row">
+    <div class="col-5">
+    <label>E-mail: </label>
+    <input type="email" class="form-control" name="email">
+</div>
+<div class="col-4">
+    <label for="">Funcionário</label>
+    <select class="form-control" name="func">
+        <option value="sim">Sim</option>
+        <option value="não">Não</option>
+    </select>
+    </div>
+</div>
+<br>
 <button type="submit" class="btn btn-primary">Enviar</button>
+
 </form>
 </div>
